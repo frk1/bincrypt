@@ -1,0 +1,10 @@
+[package]
+name = "bincrypt"
+version = "0.1.0"
+authors = ["frk <hazefrk+dev@gmail.com>"]
+
+[dependencies]
+base64 = "0.9.0"
+clap = "2.29.2"
+failure = "0.1.1"
+rust_sodium = "0.7.0"
