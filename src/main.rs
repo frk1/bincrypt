@@ -41,7 +41,7 @@ fn main() {
             Arg::with_name("decrypt")
                 .short("d")
                 .long("decrypt")
-                .help("Switch to decoding"),
+                .help("Switch to decrypting"),
         )
         .get_matches();
 
