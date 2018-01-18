@@ -72,7 +72,7 @@ pub fn decrypt_file(path_input: &str, path_output: &str, key: &Key) -> Result<()
     let mut buffer = Vec::new();
     file_input.read_to_end(&mut buffer)?;
 
-    let plain = secretbox::open(&buffer, &nonce, key).map_err(|_| BincryptError::FailedDecryption)?;
+    let plain = secretbox::open(&buffer, &nonce, key).or(Err(BincryptError::FailedDecryption))?;
     file_output.write_all(&plain)?;
     Ok(())
 }
