@@ -27,7 +27,7 @@ pub fn transform_key(key: &str) -> Option<Key> {
     Key::from_slice(&key)
 }
 
-/// Generate new key and write the base64 encoded version to key.txt and write to stdout
+/// Generate new key and write the base64 encoded version to key.txt and stdout
 pub fn generate_key() -> Key {
     let write_to_file = |k: &Key| -> Result<(), Error> {
         let mut buffer = File::create("key.txt")?;
