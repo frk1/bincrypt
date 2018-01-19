@@ -34,6 +34,7 @@ fn main() {
             Arg::with_name("encryption_key")
                 .short("k")
                 .long("key")
+                .value_name("KEY")
                 .help("Base64 encoded encryption key")
                 .takes_value(true),
         )
@@ -45,20 +46,25 @@ fn main() {
         )
         .get_matches();
 
+    let key_opt = matches.value_of("encryption_key").and_then(transform_key);
     rust_sodium::init();
-    let key = matches
-        .value_of("encryption_key")
-        .and_then(transform_key)
-        .unwrap_or_else(generate_key);
 
     let file_in = matches.value_of("file_in").unwrap();
     let file_out = matches.value_of("file_out").unwrap();
 
     if matches.is_present("decrypt") {
-        if let Err(err) = decrypt_file(file_in, file_out, &key) {
+        if let Some(key) = key_opt {
+            if let Err(err) = decrypt_file(file_in, file_out, &key) {
+                println!("Error: {}", err);
+            }
+        } else {
+            println!("Error: Need valid encryption key to decrypt!")
+        }
+    } else {
+        let key = key_opt.unwrap_or_else(generate_key);
+
+        if let Err(err) = encrypt_file(file_in, file_out, &key) {
             println!("Error: {}", err);
         }
-    } else if let Err(err) = encrypt_file(file_in, file_out, &key) {
-        println!("Error: {}", err);
     }
 }
