@@ -11,7 +11,7 @@ use internal::{decrypt_file, encrypt_file, generate_key, transform_key};
 
 fn main() {
     let matches = App::new("bincrypt")
-        .version("0.1.0")
+        .version("0.1.1")
         .author("frk <hazefrk+dev@gmail.com>")
         .about("Encrypt a file using XSalsa20-Poly1305!")
         .arg(
