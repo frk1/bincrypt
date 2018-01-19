@@ -46,7 +46,6 @@ pub fn generate_key() -> Key {
 /// The `Nonce` will be saved as the first `NONCEBYTES` of the output file.
 pub fn encrypt_file(path_input: &str, path_output: &str, key: &Key) -> Result<(), Error> {
     let mut file_input = File::open(path_input)?;
-    let mut file_output = File::create(path_output)?;
 
     let mut buffer = Vec::new();
     file_input.read_to_end(&mut buffer)?;
@@ -54,6 +53,7 @@ pub fn encrypt_file(path_input: &str, path_output: &str, key: &Key) -> Result<()
     let nonce = secretbox::gen_nonce();
     let cipher = secretbox::seal(&buffer, &nonce, key);
 
+    let mut file_output = File::create(path_output)?;
     file_output.write_all(&nonce.0)?;
     file_output.write_all(&cipher)?;
     Ok(())
@@ -63,7 +63,6 @@ pub fn encrypt_file(path_input: &str, path_output: &str, key: &Key) -> Result<()
 /// If the file already exists it will be overwritten!
 pub fn decrypt_file(path_input: &str, path_output: &str, key: &Key) -> Result<(), Error> {
     let mut file_input = File::open(path_input)?;
-    let mut file_output = File::create(path_output)?;
 
     let mut nonce_buffer = [0u8; NONCEBYTES];
     file_input.read_exact(&mut nonce_buffer)?;
@@ -73,6 +72,8 @@ pub fn decrypt_file(path_input: &str, path_output: &str, key: &Key) -> Result<()
     file_input.read_to_end(&mut buffer)?;
 
     let plain = secretbox::open(&buffer, &nonce, key).or(Err(BincryptError::FailedDecryption))?;
+
+    let mut file_output = File::create(path_output)?;
     file_output.write_all(&plain)?;
     Ok(())
 }
