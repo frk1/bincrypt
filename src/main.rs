@@ -12,7 +12,7 @@ use structopt::StructOpt;
 
 #[derive(StructOpt, Debug)]
 #[structopt(name = "bincrypt", about = "Encrypt a file using XSalsa20-Poly1305!",
-            version = "0.1.1", author = "frk <hazefrk+dev@gmail.com>")]
+            version = "0.2.0", author = "frk <hazefrk+dev@gmail.com>")]
 struct Opt {
     /// A flag, true if used in the command line. Enables decryption mode.
     #[structopt(short = "d", long = "decrypt", help = "Activate decryption mode")]
