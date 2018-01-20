@@ -4,8 +4,8 @@ extern crate rust_sodium;
 use std::fs::File;
 use std::io::prelude::*;
 
-use failure::Error;
 use base64::{decode, encode};
+use failure::Error;
 use rust_sodium::crypto::secretbox;
 use rust_sodium::crypto::secretbox::{Key, Nonce, NONCEBYTES};
 
