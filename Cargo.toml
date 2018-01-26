@@ -9,3 +9,11 @@ failure = "0.1.1"
 rust_sodium = "0.7.0"
 structopt = "0.1.6"
 structopt-derive = "0.1.6"
+
+[package.metadata.winres]
+ProductName = "bincrypt"
+OriginalFilename = "bincrypt.exe"
+LegalCopyright = "MIT-License"
+
+[target.'cfg(windows)'.build-dependencies]
+winres = "0.1"

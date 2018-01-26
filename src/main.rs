@@ -12,7 +12,7 @@ use structopt::StructOpt;
 
 #[derive(StructOpt, Debug)]
 #[structopt(name = "bincrypt", about = "Encrypt a file using XSalsa20-Poly1305!",
-            version = "0.2.0", author = "frk <hazefrk+dev@gmail.com>")]
+            author = "frk <hazefrk+dev@gmail.com>")]
 struct Opt {
     /// A flag, true if used in the command line. Enables decryption mode.
     #[structopt(short = "d", long = "decrypt", help = "Activate decryption mode")]
@@ -34,7 +34,9 @@ struct Opt {
 fn main() {
     rust_sodium::init();
 
-    let opt = Opt::from_args();
+    let app = Opt::clap().version(env!("GIT_PKG_VERSION_SEMVER"));
+    let opt = Opt::from_clap(app.get_matches());
+
     let input = opt.input;
     let key_opt = opt.key.and_then(|k| transform_key(&k));
 
