@@ -2,6 +2,14 @@
 name = "bincrypt"
 version = "0.3.0"
 authors = ["frk <hazefrk+dev@gmail.com>"]
+description = "Encrypt a file using XSalsa20-Poly1305!"
+documentation = "https://github.com/frk1/bincrypt"
+homepage = "https://github.com/frk1/bincrypt"
+repository = "https://github.com/frk1/bincrypt"
+keywords = ["encryption", "file", "decryption"]
+categories = ["command-line-utilities"]
+license = "MIT"
+build = "build.rs"
 
 [dependencies]
 base64 = "0.9.0"
