@@ -34,7 +34,12 @@ struct Opt {
 fn main() {
     rust_sodium::init();
 
-    let app = Opt::clap().version(env!("GIT_PKG_VERSION_SEMVER"));
+    let mut app_version = env!("GIT_PKG_VERSION_SEMVER");
+    if app_version.is_empty() {
+        app_version = env!("CARGO_PKG_VERSION");
+    }
+
+    let app = Opt::clap().version(app_version);
     let opt = Opt::from_clap(app.get_matches());
 
     let input = opt.input;
