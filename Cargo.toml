@@ -11,17 +11,17 @@ categories = ["command-line-utilities"]
 license = "MIT"
 build = "build.rs"
 
-[dependencies]
-base64 = "0.9.0"
-failure = "0.1.1"
-rust_sodium = "0.7.0"
-structopt = "0.1.6"
-structopt-derive = "0.1.6"
-
 [package.metadata.winres]
 ProductName = "bincrypt"
 OriginalFilename = "bincrypt.exe"
 LegalCopyright = "MIT-License"
 
+[dependencies]
+base64 = "0.9.0"
+failure = "0.1.1"
+rust_sodium = "0.8.0"
+structopt = "0.2.5"
+structopt-derive = "0.2.5"
+
 [target.'cfg(windows)'.build-dependencies]
-winres = "0.1"
+winres = "0.1.5"

@@ -40,7 +40,7 @@ fn main() {
     }
 
     let app = Opt::clap().version(app_version);
-    let opt = Opt::from_clap(app.get_matches());
+    let opt = Opt::from_clap(&app.get_matches());
 
     let input = opt.input;
     let key_opt = opt.key.and_then(|k| transform_key(&k));
