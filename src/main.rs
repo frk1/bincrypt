@@ -11,8 +11,11 @@ use internal::{decrypt_file, encrypt_file, generate_key, transform_key};
 use structopt::StructOpt;
 
 #[derive(StructOpt, Debug)]
-#[structopt(name = "bincrypt", about = "Encrypt a file using XSalsa20-Poly1305!",
-            author = "frk <hazefrk+dev@gmail.com>")]
+#[structopt(
+    name = "bincrypt",
+    about = "Encrypt a file using XSalsa20-Poly1305!",
+    author = "frk <hazefrk+dev@gmail.com>"
+)]
 struct Opt {
     /// A flag, true if used in the command line. Enables decryption mode.
     #[structopt(short = "d", long = "decrypt", help = "Activate decryption mode")]
@@ -32,7 +35,7 @@ struct Opt {
 }
 
 fn main() {
-    rust_sodium::init();
+    rust_sodium::init().expect("Failed to initialize rust_sodium");
 
     let mut app_version = env!("GIT_PKG_VERSION_SEMVER");
     if app_version.is_empty() {
