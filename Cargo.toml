@@ -24,4 +24,4 @@ structopt = "0.2.10"
 structopt-derive = "0.2.10"
 
 [target.'cfg(windows)'.build-dependencies]
-winres = "0.1.5"
+winres = "0.1.6"
