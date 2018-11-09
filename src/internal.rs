@@ -64,7 +64,7 @@ pub fn encrypt_file(path_input: &str, path_output: &str, key: &Key) -> Result<()
 pub fn decrypt_file(path_input: &str, path_output: &str, key: &Key) -> Result<(), Error> {
     let mut file_input = File::open(path_input)?;
 
-    let mut nonce_buffer = [0u8; NONCEBYTES];
+    let mut nonce_buffer = [0_u8; NONCEBYTES];
     file_input.read_exact(&mut nonce_buffer)?;
     let nonce = Nonce::from_slice(&nonce_buffer).ok_or(BincryptError::InvalidNonce)?;
 

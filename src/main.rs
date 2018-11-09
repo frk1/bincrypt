@@ -1,9 +1,10 @@
+#![warn(clippy::pedantic)]
+
 extern crate base64;
 #[macro_use]
 extern crate failure;
 extern crate rust_sodium;
 extern crate structopt;
-#[macro_use]
 extern crate structopt_derive;
 
 mod internal;
