@@ -17,11 +17,11 @@ OriginalFilename = "bincrypt.exe"
 LegalCopyright = "MIT-License"
 
 [dependencies]
-base64 = "0.10.0"
-failure = "0.1.3"
-rust_sodium = "0.10.1"
-structopt = "0.2.13"
-structopt-derive = "0.2.13"
+base64 = "0.10.1"
+failure = "0.1.5"
+rust_sodium = "0.10.2"
+structopt = "0.2.15"
+structopt-derive = "0.2.15"
 
 [target.'cfg(windows)'.build-dependencies]
-winres = "0.1.6"
+winres = "0.1.9"
