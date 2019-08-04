@@ -62,7 +62,7 @@ dependencies = [
 
 [[package]]
 name = "bincrypt"
-version = "0.3.3"
+version = "0.3.4"
 dependencies = [
  "base64 0.10.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "failure 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",

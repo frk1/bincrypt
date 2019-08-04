@@ -1,6 +1,6 @@
 [package]
 name = "bincrypt"
-version = "0.3.3"
+version = "0.3.4"
 authors = ["frk <hazefrk+dev@gmail.com>"]
 description = "Encrypt a file using XSalsa20-Poly1305!"
 documentation = "https://github.com/frk1/bincrypt"
