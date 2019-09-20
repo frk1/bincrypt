@@ -20,8 +20,8 @@ LegalCopyright = "MIT-License"
 base64 = "0.10.1"
 failure = "0.1.5"
 rust_sodium = "0.10.2"
-structopt = "0.2.18"
-structopt-derive = "0.2.18"
+structopt = "0.3.2"
+structopt-derive = "0.3.2"
 
 [target.'cfg(windows)'.build-dependencies]
 winres = "0.1.11"
